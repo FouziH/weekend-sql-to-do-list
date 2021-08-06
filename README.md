@@ -18,21 +18,21 @@ You are going to create a 'TO DO' application. This type of application is very 
 
 PHASE 1:
     Work on creating my folders and files 
-        []Create Server folder
-            []Create public folder
-                [] Client folder 
-                    - client.js file
-                [] styles
-                    - style.css file
-            [] Routes folder
-                - routes.js file
-        - server.js file 
-        - Database.sql
+        [x]Create Server folder
+            [x]Create public folder
+                [x] Client folder 
+                    - client.js file [✅]
+                [x] styles
+                    - style.css file [✅]
+            [x] Routes folder
+                - routes.js file [✅]
+        - server.js file [✅]
+        - Database.sql [✅] 
     Work on installing 
-        [] JSON 
-        [] express 
-        [] body-parser
-        [] postgresql
+        [x] JSON 
+        [x] express 
+        [x] body-parser
+        [x] postgresql
 
 PHASE 2:
     The html.index file need to contain the following 
