@@ -48,8 +48,11 @@ PHASE 2:
 PHASE 3:
     Work on creating my client side logic 
     [x] Make sure the jquery library is saved in vendor folder 
-    [] Create OnReady Function 
-    [] Create my function to add task 
+    [x] Create OnReady Function 
+    [x] Create my function to add task 
+        [x] Create ajax request to post input value to the Database/server
+        [x] create ajax request to get db results from the server
+        [] Create a function to display results once an item/task is added 
 
 
 PHASE 4:
