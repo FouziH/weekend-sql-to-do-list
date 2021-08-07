@@ -47,7 +47,6 @@ pool.query(sqlQuery, sqlParams)
 router.delete('/:id', (req, res) => {
     let sqlQuery = `DELETE FROM "todo"
 where "id" = $1;`;
-
 let sqlParams = [req.params.id ]
 pool.query(sqlQuery, sqlParams)
 .then((dbRes) =>{
@@ -57,7 +56,6 @@ pool.query(sqlQuery, sqlParams)
 .catch((error) => {
 console.log("DELETE id request failed", error);
 })
-
 })
 
 module.exports = router;  //exporting the router 
