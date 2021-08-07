@@ -51,8 +51,9 @@ function renderTask(toDoTask) {
     //using the for loop to access the the parameter 
     for (let i = 0; i < toDoTask.length; i++) {
         //appending the myTask to the dom 
-      myTask.append(`<li class="checked">${toDoTask[i].task} 
-        <button class = "deleteBtn">Delete</button></li>`);
+      myTask.append(`<li>${toDoTask[i].task} 
+        <button class = "deleteBtn">Delete</button>
+        <button class ="completeBtn">✔</button></li>`);
     }
 }
 
