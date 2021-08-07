@@ -7,6 +7,9 @@ function onReady() {
     //This will be responsible  for listening to addTask button will call on the addTask function that was passed
     $(document).on("click", "#addTaskBtn", addTask);
     $('#myTasks').on("click", ".deleteBtn", deleteTask);
+
+    $("#myTasks").on("click", ".completeBtn", completeTask);
+  //calling getToDoTask
     getToDoTask();
 }
 //This function will addTask from my input into an a taskData object and will make a request to the server to make a POST 
@@ -27,6 +30,9 @@ $.ajax({
 }).then((response) =>{ //waiting for response
     console.log("response is", response); //logging the response 
     getToDoTask(response); //calling the getToDoTak function  and passing the response as an argument 
+    //telling the jquery to clear the input once the add task button is pressed 
+    $("#inputTask").val("");
+
 }).catch((error) => { // if the above request failed 
     //we are going to use the catch error method 
     console.log("POST /todo failed error", error); // using the console to log what the issue might be
@@ -52,7 +58,7 @@ function renderTask(toDoTask) {
     //using the for loop to access the the parameter 
     for (let i = 0; i < toDoTask.length; i++) {
         //appending the myTask to the dom 
-      myTask.append(`<li data-id = "${toDoTask[i].id}">${toDoTask[i].task} 
+      myTask.append(`<li data-id = "${toDoTask[i].id}" data-task ="${toDoTask[i].task}" data-iscomplete ="${toDoTask[i].iscomplete}">${toDoTask[i].task} 
         <button class = "deleteBtn">Delete</button>
         <button class ="completeBtn">✔</button></li>`);
     }
@@ -73,8 +79,29 @@ function deleteTask() {
     }).catch((error) => { //catch error 
         console.log("DELETE /todo failed", error); // log the delete error to the console
     })
+}
+//function to mark when the complete is checked
+function completeTask() {
+    let completedId = $(this).closest('li').data('id');
+    
+    $.ajax({
+        method: 'PUT',
+        url: `/todo/${completedId}`,
+    }).then((response) => {
+        console.log("PUT /todo response is", response)
+    }).catch((error) => {
+        console.log("PUT /todo  failed", error);
+    })
+}
+
+function tasksCompletedRender(response) {
+
+    let 
+
 
 }
+
+
 
 
 
