@@ -6,6 +6,7 @@
 body{
  background: rgb(255,255,255);
 background: linear-gradient(90deg, rgba(255,255,255,1) 3%, rgba(51,37,37,0.6348914565826331) 32%);
+font-family: 'Raleway', sans-serif;
 }
 
 /* Style the header */
@@ -59,7 +60,6 @@ ul{
 li{
   margin-top: 10px;
   padding: 5px;
-  border: 1px solid black;
   width: 90%;
   float: left;
   margin: 10px;

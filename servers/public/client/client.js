@@ -6,6 +6,7 @@ function onReady() {
     console.log("on OnReady function");
     //This will be responsible  for listening to addTask button will call on the addTask function that was passed
     $(document).on("click", "#addTaskBtn", addTask);
+    $('#myTasks').on("click", ".deleteBtn", deleteTask);
     getToDoTask();
 }
 //This function will addTask from my input into an a taskData object and will make a request to the server to make a POST 
@@ -51,10 +52,28 @@ function renderTask(toDoTask) {
     //using the for loop to access the the parameter 
     for (let i = 0; i < toDoTask.length; i++) {
         //appending the myTask to the dom 
-      myTask.append(`<li>${toDoTask[i].task} 
+      myTask.append(`<li data-id = "${toDoTask[i].id}">${toDoTask[i].task} 
         <button class = "deleteBtn">Delete</button>
         <button class ="completeBtn">✔</button></li>`);
     }
+}
+//This  function will delete tasks from the dom and the database/server
+function deleteTask() {
+    console.log('on deleteTask function'); //logging to see if my delete function working properly 
+    console.log($(this));
+    const taskId = $(this).closest('li').data('id'); // declared taskId and setting the closest data id as val
+    console.log(taskId);// logging the taskId to see when the delete button is clicked i am able to get the correct id --- getting the correct id results 
+    //Would make a ajax request to delete items from the dom based on the id of the task
+    $.ajax({
+        method:"DELETE", //Ajax method request is delete
+        url: `/todo/${taskId}` //url is the url address/id
+    }).then((response) => {
+        console.log(response); // log response 
+          getToDoTask(response); //calling the getToDoTak function  and passing the 
+    }).catch((error) => { //catch error 
+        console.log("DELETE /todo failed", error); // log the delete error to the console
+    })
+
 }
 
 
