@@ -1,7 +1,5 @@
-
 //Exporting jquery library to my client.js file 
 $(document).ready(onReady);
-
 //Creating onReady function that will be responsible for listening to clicks
 function onReady() {
     //log to see if my function is working correctly, I should see 
@@ -10,8 +8,7 @@ function onReady() {
     $(document).on("click", "#addTaskBtn", addTask);
     getToDoTask();
 }
-
-
+//This function will addTask from my input into an a taskData object and will make a request to the server to make a POST 
 function addTask() {
 //log to the browser to see if the function is working as intended 
 console.log("on addTask to the function"); //working correctly
@@ -34,8 +31,6 @@ $.ajax({
     console.log("POST /todo failed error", error); // using the console to log what the issue might be
 })
 }
-
-
 //function  will get the todo task 
 function getToDoTask(){
     $.ajax({ //making ajax request 
@@ -49,12 +44,13 @@ function getToDoTask(){
         console.log("Error in function getTODoTak is", err);
     })
 }
-
+//The function will render Tasks into the dom and takes and argument as parameter
 function renderTask(toDoTask) {
-    let myTask = $('#myTasks')
-    myTask.empty()
-
+    let myTask = $('#myTasks');  //declaring variable and setting to my order list element 
+    myTask.empty(); // using the empty method
+    //using the for loop to access the the parameter 
     for (let i = 0; i < toDoTask.length; i++) {
+        //appending the myTask to the dom 
       myTask.append(`<li class="checked">${toDoTask[i].task} 
         <button class = "deleteBtn">Delete</button></li>`);
     }
