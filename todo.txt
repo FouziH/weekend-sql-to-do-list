@@ -40,11 +40,9 @@ PHASE 2:
             [x] Should say To-Do App.
         [x] input to add a task. 
         [x] Button to add the Task. 
-        [] butt the task on unordered list. 
-            [x] it should say what the task is.
-            [x] what the state of the task is.
-            [x] should have button for complete state.
+        [] button the task on unordered list. 
             [x] should have a button for deleting the task from the dom. 
+            [x] Should have a button to complete a task
 PHASE 3:
     Work on creating my client side logic. 
     [x] Make sure the jquery library is saved in vendor folder. 
@@ -55,18 +53,21 @@ PHASE 3:
         [x] Create a function to display results once an item/task is added. 
         [x] Create ajax request to update the status of the task.
             [x] When the complete button is clicked, the iscomplete  boolean in the db should turn from false to true.
-        [x] Create a delete button
             [x] grab the id of the li being deleted.
             [x] when a the delete button is clicked, it should the li from the DOM.
             [x] Create ajax request and get the id requested to be deleted from the DOM to get also get deleted from the db.
-            [] When the checked button is clicked is it should turn the database to true and on the DOM should have another class that will do come sort of text decoration
-                [] the text decoration should have a line go through the text indicating the task is complete 
+            [x] When the checked button is clicked is it should turn the database to true and on the DOM should have another class that will do come sort of text decoration
+            [x] the text decoration should have a line go through the text indicating the task is complete and background color should be set to green
+
 PHASE 4:
     Work on creating my Database -- MORE PLANNING NEEDED
         [x] Create a database table named "todo"
             [x] it should have id set to serial number assigned by the db
             [x] should have task column VARCHAR set 500
             [x]  should have is complete set to a boolean false initially
+            [x] it should say what the task is.
+            [x] what the state of the task is in the db.
+            [x] should have button for complete state from false to true.
 PhASE 5:
     //Require the app that I would be using in my server.js file. 
     [x]load express. 
