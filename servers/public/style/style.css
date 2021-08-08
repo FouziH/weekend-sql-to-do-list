@@ -4,8 +4,8 @@
 }
 
 body{
-background: rgb(255,255,255);
-background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(252,231,231,1) 100%);
+background: rgb(252,231,231);
+background: radial-gradient(circle, rgba(252,231,231,1) 0%, rgba(255,255,255,1) 0%);
 font-family: "Courier New", Courier, monospace;
 font-size: 29px;
 letter-spacing: -2.6px;
@@ -21,12 +21,12 @@ text-transform: none;
 
 /* Style the header */
 .header {
- background: rgb(51,37,37);
-background: linear-gradient(90deg, rgba(51,37,37,1) 0%, rgba(148,187,233,1) 100%);
+ background: rgb(252,231,231);
+background: linear-gradient(90deg, rgba(252,231,231,1) 0%, rgba(99,163,195,0.458420868347339) 0%);
   padding: 30px 40px;
   color: white;
   text-align: center;
-  margin: auto 5px;
+  margin: auto 10px;
 }
 
 /* Clear floats after the header */
@@ -44,7 +44,7 @@ input {
   width: 75%;
   padding: 10px;
   float: left;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 10px;
 }
 
@@ -56,11 +56,12 @@ input {
   color: #555;
   float: left;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   transition: 0.3s;
   border-radius: 0;
-  border-radius: 15px;
+  border-radius: 10px;
+ 
 }
 
 #addTaskBtn:hover {
@@ -76,12 +77,12 @@ li{
   float: left;
   margin: 10px;
   cursor: pointer;
-  font-size: 19px;
+  font-size: 20px;
   background: rgb(252,231,231);
-  background: linear-gradient(90deg, rgba(252,231,231,1) 0%, rgba(255,255,255,1) 3%, rgba(51,37,37,1) 99%);
+  background: linear-gradient(90deg, rgba(252,231,231,1) 0%, rgba(126,129,127,0.458420868347339) 0%);
   color:black;
   border-radius: 15px;
-  font-weight: bold;
+  font-weight: large;
  
 }
 
@@ -100,6 +101,7 @@ li{
   cursor: pointer;
   margin: auto 5px;
   border-radius: 15px;
+
 }
 .completeBtn{
     position:relative;
@@ -119,7 +121,12 @@ li{
 }
 .done{
   text-decoration:line-through;
-  text-decoration-color: red;
+  text-decoration-color:black;
+  background: rgb(252,231,231);
+background: linear-gradient(90deg, rgba(252,231,231,1) 0%, rgba(138,236,171,0.458420868347339) 0%);
+}
+.checkedOff{
+  color:green;
 }
 
 

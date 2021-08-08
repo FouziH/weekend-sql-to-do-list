@@ -94,5 +94,7 @@ function completeTask() {
     }) 
 //when the complete checked button is clicked, the done class in my css would be applied to the list 
 $(this).closest("li").toggleClass("done");
+//  $(this).closest("li").parent().children().third().toggleClass("checkedOff");
+ $(this).closest("li").children().last().toggleClass("checkedOff");
 }
  
