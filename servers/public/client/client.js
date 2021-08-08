@@ -7,7 +7,6 @@ function onReady() {
     //This will be responsible  for listening to addTask button will call on the addTask function that was passed
     $(document).on("click", "#addTaskBtn", addTask);
     $('#myTasks').on("click", ".deleteBtn", deleteTask);
-
     $("#myTasks").on("click", ".completeBtn", completeTask);
   //calling getToDoTask
     getToDoTask();
@@ -58,10 +57,11 @@ function renderTask(toDoTask) {
     //using the for loop to access the the parameter 
     for (let i = 0; i < toDoTask.length; i++) {
         //appending the myTask to the dom 
-      myTask.append(`<li data-id = "${toDoTask[i].id}" data-task ="${toDoTask[i].task}" data-iscomplete ="${toDoTask[i].iscomplete}">${toDoTask[i].task} 
+      myTask.append(`<li data-id = "${toDoTask[i].id}" data-task ="${toDoTask[i].task}" data-iscomplete ="${toDoTask[i].iscomplete}" >${toDoTask[i].task} 
         <button class = "deleteBtn">Delete</button>
         <button class ="completeBtn">✔</button></li>`);
     }
+   
 }
 //This  function will delete tasks from the dom and the database/server
 function deleteTask() {
@@ -80,10 +80,10 @@ function deleteTask() {
         console.log("DELETE /todo failed", error); // log the delete error to the console
     })
 }
-//function to mark when the complete is checked
+//function to request put to the server when the complete is checked
 function completeTask() {
     let completedId = $(this).closest('li').data('id');
-    
+    console.log(completedId);
     $.ajax({
         method: 'PUT',
         url: `/todo/${completedId}`,
@@ -91,17 +91,8 @@ function completeTask() {
         console.log("PUT /todo response is", response)
     }).catch((error) => {
         console.log("PUT /todo  failed", error);
-    })
+    }) 
+//when the complete checked button is clicked, the done class in my css would be applied to the list 
+$(this).closest("li").toggleClass("done");
 }
-
-function tasksCompletedRender(response) {
-
-    let 
-
-
-}
-
-
-
-
-
+ 

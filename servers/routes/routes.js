@@ -59,8 +59,8 @@ console.log("DELETE id request failed", error);
 })
 router.put('/:id', (req, res) => {
 
- let sqlQuery = `UPDATE "todo" SET "iscomplete" = true 
- WHERE "id" = $1`;
+ let sqlQuery = `UPDATE "todo" SET "iscomplete" = true
+ WHERE "id" = $1;`;
  let sqlParams = [
      req.params.id
  ]
