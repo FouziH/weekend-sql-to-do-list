@@ -52,20 +52,21 @@ function getToDoTask(){
 }
 //The function will render Tasks into the dom and takes and argument as parameter
 function renderTask(toDoTask) {
-    let myTask = $('#myTasks');  //declaring variable and setting to my order list element 
-    myTask.empty(); // using the empty method
-    //using the for loop to access the the parameter 
-    for (let i = 0; i < toDoTask.length; i++) {
-        //appending the myTask to the dom 
-       
-          myTask.append(`<li data-id = "${toDoTask[i].id}" data-task ="${toDoTask[i].task}" data-iscomplete ="${toDoTask[i].iscomplete}" >${toDoTask[i].task} 
-        <button class = "deleteBtn">Delete</button>
-        <button class ="completeBtn">✔️</button></li>`);
-       
+  let myTask = $("#myTasks"); //declaring variable and setting to my order list element
+  myTask.empty(); // using the empty method
+  let done = $('.done');
 
-        }
-      
-   
+  //using the for loop to access the the parameter
+//   myUpdatedTask.empty
+  for (let i = 0; i < toDoTask.length; i++) {
+    //appending the myTask to the dom
+    myTask.append(`
+    <li data-id = "${toDoTask[i].id}" 
+    data-task ="${toDoTask[i].task}" 
+    data-iscomplete ="${toDoTask[i].iscomplete}" ${toDoTask[i].iscomplete ? 'class="done"' : ''}> ${toDoTask[i].task} 
+    <button class = "deleteBtn">Delete</button>
+    <button class ="completeBtn">✔️</button></li>`);              
+    }
 }
 //This  function will delete tasks from the dom and the database/server
 function deleteTask() {
@@ -87,21 +88,21 @@ function deleteTask() {
 //function to request put to the server when the complete is checked
 function completeTask() {
     let completedId = $(this).closest('li').data('id');
+    let iscomplete = $(this).closest('li').data('iscomplete')
     console.log(completedId);
-    $.ajax({
-        method: 'PUT',
+   console.log(iscomplete);
+   if(iscomplete === true){
+        $(this).closest("li").toggleClass("done");
+        //  $(this).closest("li").parent().children().third().toggleClass("checkedOff");
+   }
+      $.ajax({
+        method: "PUT",
         url: `/todo/${completedId}`,
-    }).then((response) => {
-        console.log("PUT /todo response is", response)
-        for (let i = 0; i < response.length; i++) {
-          if (response[i].iscomplete === true) {
-            //when the complete checked button is clicked, the done class in my css would be applied to the list
-            $(this).closest("li").toggleClass("done");
-            //  $(this).closest("li").parent().children().third().toggleClass("checkedOff");
-            $(this).closest("li").children().last().toggleClass("checkedOff");
-          }
-        }
-    }).catch((error) => {
-        console.log("PUT /todo  failed", error);
-    }) 
+      })
+        .then((response) => {
+          console.log("PUT /todo response is", response);
+        })
+        .catch((error) => {
+          console.log("PUT /todo  failed", error);
+        }); 
 }

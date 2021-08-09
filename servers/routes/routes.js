@@ -67,7 +67,7 @@ send.sendStatus(500);
 //making update request todo the db 
 router.put('/:id', (req, res) => { // basing the id that needs to be updated
  let sqlQuery = `UPDATE "todo" SET "iscomplete" = true
- WHERE "id" = $1;`; //variable is set to the query that needs to be sent to the databse
+ WHERE "id" = $1;`; //variable is set to the query that needs to be sent to the database
  let sqlParams = [
      req.params.id
  ] //passing the id as sqlParams
@@ -80,5 +80,4 @@ router.put('/:id', (req, res) => { // basing the id that needs to be updated
      send.sendStatus(500)//send 500 error code to the client 
  })
 })
-
 module.exports = router;  //exporting the router 
