@@ -1,6 +1,7 @@
+
 CREATE TABLE "todo"(
 	"id" serial,
-	"task" VARCHAR(200),
+	"task" VARCHAR(1028),
 	"iscomplete" boolean NOT NULL
 );
 
@@ -13,7 +14,6 @@ SELECT * FROM "todo";
 
 --method to query and select  all in my todo table
 --SELECT * FROM "todo";
-
 
 --DROP TABLE "todo"
 

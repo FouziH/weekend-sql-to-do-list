@@ -29,6 +29,7 @@ background: linear-gradient(90deg, rgba(252,231,231,1) 0%, rgba(99,163,195,0.458
   color: white;
   text-align: center;
   margin: auto 10px;
+  border-radius: 40px
 }
 
 /* Clear floats after the header */
