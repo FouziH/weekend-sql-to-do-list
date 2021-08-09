@@ -57,10 +57,14 @@ function renderTask(toDoTask) {
     //using the for loop to access the the parameter 
     for (let i = 0; i < toDoTask.length; i++) {
         //appending the myTask to the dom 
-      myTask.append(`<li data-id = "${toDoTask[i].id}" data-task ="${toDoTask[i].task}" data-iscomplete ="${toDoTask[i].iscomplete}" >${toDoTask[i].task} 
+       
+          myTask.append(`<li data-id = "${toDoTask[i].id}" data-task ="${toDoTask[i].task}" data-iscomplete ="${toDoTask[i].iscomplete}" >${toDoTask[i].task} 
         <button class = "deleteBtn">Delete</button>
-        <button class ="completeBtn">✔</button></li>`);
-    }
+        <button class ="completeBtn">✔️</button></li>`);
+       
+
+        }
+      
    
 }
 //This  function will delete tasks from the dom and the database/server
@@ -89,12 +93,15 @@ function completeTask() {
         url: `/todo/${completedId}`,
     }).then((response) => {
         console.log("PUT /todo response is", response)
+        for (let i = 0; i < response.length; i++) {
+          if (response[i].iscomplete === true) {
+            //when the complete checked button is clicked, the done class in my css would be applied to the list
+            $(this).closest("li").toggleClass("done");
+            //  $(this).closest("li").parent().children().third().toggleClass("checkedOff");
+            $(this).closest("li").children().last().toggleClass("checkedOff");
+          }
+        }
     }).catch((error) => {
         console.log("PUT /todo  failed", error);
     }) 
-//when the complete checked button is clicked, the done class in my css would be applied to the list 
-$(this).closest("li").toggleClass("done");
-//  $(this).closest("li").parent().children().third().toggleClass("checkedOff");
- $(this).closest("li").children().last().toggleClass("checkedOff");
 }
- 

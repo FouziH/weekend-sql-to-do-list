@@ -18,7 +18,9 @@ font-style: normal;
 font-variant: normal;
 text-transform: none;
 }
-
+h1{
+  color:gray;
+}
 /* Style the header */
 .header {
  background: rgb(252,231,231);

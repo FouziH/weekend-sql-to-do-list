@@ -35,44 +35,50 @@ router.post('/', (req, res) => {
     //declaring my sql params and passing my req.body object into it
 let sqlParams = [req.body.task, req.body.iscomplete];
 
+//This will pool will pass the above query to the database 
 pool.query(sqlQuery, sqlParams) //
 .then((dbRes) => {
     console.log(dbRes);
-    res.sendStatus(201)
-}).catch((error) => {
-    console.log("Failed to POST into the database", error);
-    res.sendStatus(500)
+    res.sendStatus(201); //sending okay status to the client 
+}).catch((error) => { //catch any errors regarding my request to the database 
+    console.log("Failed to POST into the database", error);//log the error
+    res.sendStatus(500); //sending error message to the client
 })
 })
+//This is Delete router request 
 router.delete('/:id', (req, res) => {
+    //we are going to request Delete query 
     let sqlQuery = `DELETE FROM "todo"
 where "id" = $1;`;
-let sqlParams = [req.params.id ]
-pool.query(sqlQuery, sqlParams)
-.then((dbRes) =>{
-    console.log("It worked", dbRes);
-    res.sendStatus(201)
-})
-.catch((error) => {
-console.log("DELETE id request failed", error);
-})
-})
-router.put('/:id', (req, res) => {
 
+//we are going to mask the id
+let sqlParams = [req.params.id ]
+//requesting to run the above query and sqlparams 
+pool.query(sqlQuery, sqlParams)
+.then((dbRes) =>{ //get response 
+    console.log("It worked", dbRes);
+    res.sendStatus(201); //send 201/okay status 
+})
+.catch((error) => {// catch error 
+console.log("DELETE id request failed", error); //log error
+send.sendStatus(500);
+})
+})
+//making update request todo the db 
+router.put('/:id', (req, res) => { // basing the id that needs to be updated
  let sqlQuery = `UPDATE "todo" SET "iscomplete" = true
- WHERE "id" = $1;`;
+ WHERE "id" = $1;`; //variable is set to the query that needs to be sent to the databse
  let sqlParams = [
      req.params.id
- ]
- pool.query(sqlQuery, sqlParams)
- .then((dbRes) => {
-     console.log(dbRes)
-     res.send(dbRes)
- }).catch((error) =>{
+ ] //passing the id as sqlParams
+ pool.query(sqlQuery, sqlParams) //pool request to the db
+ .then((dbRes) => { //get response from the db
+   console.log(dbRes);
+   res.sendStatus(201); //sending okay status to the client
+ }).catch((error) =>{ //catch error
      console.log('PUT /:id error', error)
-     send.sendStatus(500)
+     send.sendStatus(500)//send 500 error code to the client 
  })
-
 })
 
 module.exports = router;  //exporting the router 
