@@ -9,19 +9,15 @@ CREATE TABLE "todo"(
 
 SELECT * FROM "todo";
 	
-	
-	INSERT INTO "todo"
-	("task", "iscomplete")
-	VALUES
-	('Make deposit to Trustone Credit Union', false)	;
+--INSERT INTO "todo" ("task", "iscomplete") VALUES ('Make deposit to Trustone Credit Union', false)	;
 
 --method to query and select  all in my todo table
-SELECT * FROM "todo";
+--SELECT * FROM "todo";
 
 
-DROP TABLE "todo"
+--DROP TABLE "todo"
 
-UPDATE "todo";
+--UPDATE "todo";
 
-DELETE FROM "todo"
-where "id" = '$1';
+--DELETE FROM "todo"
+--where "id" = '$1';

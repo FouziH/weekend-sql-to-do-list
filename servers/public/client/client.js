@@ -63,7 +63,7 @@ function renderTask(toDoTask) {
     myTask.append(`
     <li data-id = "${toDoTask[i].id}" 
     data-task ="${toDoTask[i].task}" 
-    data-iscomplete ="${toDoTask[i].iscomplete}" ${toDoTask[i].iscomplete ? 'class="done"' : ''}> ${toDoTask[i].task} 
+    data-iscomplete ="${toDoTask[i].iscomplete}" ${toDoTask[i].iscomplete ? 'class="done"' : ''}  ${toDoTask[i].iscomplete ? 'class="done"' : ''}> ${toDoTask[i].task} 
     <button class = "deleteBtn">Delete</button>
     <button class ="completeBtn">✔️</button></li>`);              
     }
@@ -91,18 +91,16 @@ function completeTask() {
     let iscomplete = $(this).closest('li').data('iscomplete')
     console.log(completedId);
    console.log(iscomplete);
-   if(iscomplete === true){
-        $(this).closest("li").toggleClass("done");
-        //  $(this).closest("li").parent().children().third().toggleClass("checkedOff");
-   }
+   //making ajax request  update a task boolean to true 
       $.ajax({
-        method: "PUT",
-        url: `/todo/${completedId}`,
+        method: "PUT", // request method is true 
+        url: `/todo/${completedId}`, //passing the completedId li
       })
         .then((response) => {
           console.log("PUT /todo response is", response);
+          getToDoTask(); //calling the getToDoTask
         })
-        .catch((error) => {
-          console.log("PUT /todo  failed", error);
+        .catch((error) => { // catching errors 
+          console.log("PUT /todo  failed", error); // login error 
         }); 
 }
