@@ -131,3 +131,10 @@ background: linear-gradient(90deg, rgba(252,231,231,1) 0%, rgba(138,236,171,0.45
 .checkedOff{
   color:green;
 }
+h4{
+  text-align: center;
+  color:grey;
+}
+h4:hover{
+  color:  darkgray;
+}

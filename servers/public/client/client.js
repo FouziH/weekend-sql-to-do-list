@@ -10,6 +10,7 @@ function onReady() {
     $("#myTasks").on("click", ".completeBtn", completeTask);
   //calling getToDoTask
     getToDoTask();
+    getTimeDAte();
 }
 //This function will addTask from my input into an a taskData object and will make a request to the server to make a POST 
 function addTask() {
@@ -63,7 +64,9 @@ function renderTask(toDoTask) {
     myTask.append(`
     <li data-id = "${toDoTask[i].id}" 
     data-task ="${toDoTask[i].task}" 
-    data-iscomplete ="${toDoTask[i].iscomplete}" ${toDoTask[i].iscomplete ? 'class="done"' : ''}  ${toDoTask[i].iscomplete ? 'class="done"' : ''}> ${toDoTask[i].task} 
+    data-iscomplete ="${toDoTask[i].iscomplete}" ${
+      toDoTask[i].iscomplete ? 'class="done"' : ""
+    }  ${toDoTask[i].iscomplete ? 'class="done"' : ""}> ${toDoTask[i].task} 
     <button class = "deleteBtn">Delete</button>
     <button class ="completeBtn">✔️</button></li>`);              
     }
@@ -103,4 +106,14 @@ function completeTask() {
         .catch((error) => { // catching errors 
           console.log("PUT /todo  failed", error); // login error 
         }); 
+}
+
+function getTimeDAte() {
+
+  let timeNow = $('#timeNow')
+  timeNow.empty()
+  const now = new Date().toDateString();
+
+  timeNow.append(now)
+  console.log(now)
 }

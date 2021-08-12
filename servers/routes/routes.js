@@ -15,14 +15,19 @@ router.get('/', (req, res) => {
     let sqlQuery = `SELECT * FROM "todo" 
     ORDER BY "id" ASC;
     `; // passed my query that would be pooled 
-    pool.query(sqlQuery) //sending my slqQuery variable to 
-    .then((dbRes) => { //then response will be saved in a variable called dbRes
+    pool
+      .query(sqlQuery) //sending my slqQuery variable to
+      .then((dbRes) => {
+        //then response will be saved in a variable called dbRes
         console.log("dbRes is", dbRes.rows);
         res.send(dbRes.rows); //sending my dbRes results to the client as dbRes.rows
-    }).catch((error) => { //this will catch and error if there is an issue with my predetermined query that was sent to the db 
-        console.log('Router/Get failed', error);// login the error 
-        res.sendStatus(500); //sending 500 error message to the client 
-    })
+      })
+      .catch((error) => {
+        //this will catch and error if there is an issue with my predetermined query that was sent to the db
+        console.log("Router/Get failed", error); // login the error
+        res.sendStatus(500); //sending 500 error message to the client
+      });
+    
 })
 //router.post will be  be responsible for inserting into the database 
 router.post('/', (req, res) => {
