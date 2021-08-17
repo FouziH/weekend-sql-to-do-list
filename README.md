@@ -1,9 +1,19 @@
 # Project Name: TO DO  TASK
 
+##Technology Uses:
+    JQuery 
+    Javascript
+    Express JS
+    PG
+    HtML
+    CSS
 
 ## Description
 
-This is a simple application that would allow you to add a task to a list. Once the list is added, it would automatically be displayed in the DOM/browser. Your input will also be saved in a local database. The database will have three columns: 
+This is a simple application that would allow you to add a task to a list. Once the list is added, it would automatically be displayed in the DOM/browser. Your input will also be saved in a local database.
+
+
+The database will have three columns: 
 
     1) Id column
     2) Task column 
